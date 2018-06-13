@@ -1,5 +1,12 @@
 # AppTest
 
+If I had enough time
+Plan
+1. add interfaces
+2. add error handler
+3. add all types
+4. write tests for service and components
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
 ## Development server
