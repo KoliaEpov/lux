@@ -1,0 +1,60 @@
+<form [formGroup]="searchForm"
+      (ngSubmit)="handleSearch()"
+      class="mb-5">
+  <div class="form-group w-100">
+    <label class="w-100 mb-1" for="postCode">Post code</label>
+    <input type="text"
+           class="w-100 mb-1"
+           formControlName="search"
+           id="postCode">
+  </div>
+  <button type="submit"
+          class="btn btn-primary"
+          [disabled]="searchForm.invalid">
+    <span>Get</span>
+  </button>
+</form>
+
+<div *ngIf="postCodesInfoArray">
+  <div class="form-group w-100 mb-5">
+    <label class="w-100 mb-1" for="filterText">Search</label>
+    <input type="text"
+           class="w-100 mb-1"
+           id="filterText"
+           [(ngModel)]="filterText">
+  </div>
+
+  <ngx-datatable
+    [rows]="searchFilter(filterText)">
+
+    <ngx-datatable-column name="postcode">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template
+                   class="billing-payments-table-element-row">
+        <a [routerLink]="['/'+row.postcode]">{{ row.postcode }}</a>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="country">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template
+                   class="billing-payments-table-element-row">
+        <span>{{ row.country }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="admin_district">
+      <ng-template let-row="row"
+                   ngx-datatable-cell-template
+                   class="billing-payments-table-element-row">
+        <span>{{ row.admin_district }}</span>
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>
+
+<div *ngIf="!postCodesInfoArray">
+  <p>No data to display</p>
+</div>
+

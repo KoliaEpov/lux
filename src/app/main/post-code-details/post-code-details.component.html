@@ -1,0 +1,9 @@
+<button class="btn btn-primary mb-5" (click)="handleReturn()">Return</button>
+<table class="table table-bordered">
+  <tbody>
+  <tr *ngFor="let key of detailsKeys">
+    <td >{{ key }}</td>
+    <td >{{ details[key] | json }}</td>
+  </tr>
+  </tbody>
+</table>
